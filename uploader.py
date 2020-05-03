@@ -73,10 +73,14 @@ class MinutSession:
         }
 
     def set_state(self, state):
-        self.access_token = state['access_token']
-        self.token_type = state['token_type']
-        self.refresh_token = state['refresh_token']
-        self.expires_in = state['expires_in']
+        if 'access_token' in state:
+            self.access_token = state['access_token']
+        if 'token_type' in state:
+            self.token_type = state['token_type']
+        if 'refresh_token' in state:
+            self.refresh_token = state['refresh_token']
+        if 'expires_in' in state:
+            self.expires_in = state['expires_in']
 
         self._update_headers()
 
